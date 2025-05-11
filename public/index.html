@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wellness Bingo App</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      margin: 0;
+      padding: 2em;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 0.5em;
+    }
+
+    /* 🧾 Login box styling */
+    #login-form {
+      max-width: 480px;
+      margin: 8vh auto;
+      background: white;
+      padding: 2.5em;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+      font-size: 1.1em;
+    }
+
+    input {
+      padding: 12px;
+      width: 95%;
+      max-width: 320px;
+      font-size: 1em;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 16px;
+    }
+
+    .bingo-board {
+      display: grid;
+      grid-template-columns: repeat(5, 130px); /* was 122px */
+      gap: 14px 20px; /* vertical gap 14px, horizontal 14px */
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .cell {
+      width: 122px;
+      height: 122px;
+      background: #fff;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6px;
+      font-size: 0.85em;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s, transform 0.2s ease;
+    }
+
+    .cell:active {
+      transform: scale(0.95);
+    }
+
+    .cell.crossed {
+      background: #ddd;
+      text-decoration: line-through;
+      color: #777;
+      transform: scale(1.05);
+    }
+
+    .cell.free {
+      background: #a8e6a2;
+      font-weight: bold;
+      cursor: default;
+    }
+
+    .cell.winning {
+      animation: bingoFlash 0.6s ease-in-out 3;
+      font-weight: bold;
+      border: 2px solid gold;
+    }
+
+    @keyframes bingoFlash {
+      0%, 100% { background-color: gold; }
+      50% { background-color: white; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.3s ease;
+    }
+
+    .fade-out {
+      animation: fadeOut 0.2s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(40px) scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideOut {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-40px);
+        opacity: 0;
+      }
+    }
+
+    .slide-in {
+      animation: slideIn 0.35s ease-out;
+    }
+
+    .slide-out {
+      animation: slideOut 0.25s ease-in;
+    }
+
+    #game-section {
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    #game-section.visible {
+      opacity: 1;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 1.05em;
+      border: none;
+      border-radius: 8px;
+      background: #5c9ded;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #3e7cd3;
+    }
+  </style>
+</head>
+<body>
+  <div id="login-form">
+    <h2>Bingo Login</h2>
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="login()">Login</button>
+    <p id="error" style="color: red;"></p>
+  </div>
+
+  <div id="game-section">
+    <h2>Welcome to Bingo!</h2>
+    <button onclick="saveProgress()">Save Progress</button>
+    <button onclick="newBoard()">New Board</button>
+    <button onclick="checkBingo()">Check for BINGO</button>
+    <button onclick="exportPDF()">Export to PDF</button>
+    <div id="board" class="bingo-board"></div>
+  </div>
+
+  <script>
+    let currentUsername = "";
+
+    async function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      currentUsername = username;
+
+      const res = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (res.ok) {
+        const { board, crossed = [] } = await res.json();
+        renderBoard(board, crossed);
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('game-section').classList.add('visible');
+      } else {
+        const { error } = await res.json();
+        document.getElementById('error').textContent = error;
+      }
+    }
+
+function newBoard() {
+  const tiles = Array.from(document.querySelectorAll('.cell'))
+    .filter(cell => cell.textContent !== 'FREE');
+
+  // Grab all current texts
+  const contents = tiles.map(cell => cell.textContent);
+
+  // Fisher-Yates shuffle
+  for (let i = contents.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [contents[i], contents[j]] = [contents[j], contents[i]];
+  }
+
+  // Optional animation (fade out)
+  tiles.forEach(cell => {
+    cell.classList.add('fade-out');
+  });
+
+  setTimeout(() => {
+    tiles.forEach((cell, i) => {
+      cell.textContent = contents[i];
+      cell.classList.remove('crossed');
+      cell.classList.remove('fade-out');
+      cell.classList.add('fade-in');
+    });
+
+    setTimeout(() => {
+      tiles.forEach(cell => cell.classList.remove('fade-in'));
+    }, 300);
+  }, 200);
+}
+
+
+    function renderBoard(board, crossed = []) {
+      const boardEl = document.getElementById('board');
+      boardEl.innerHTML = '';
+      let i = 0;
+
+      for (let r = 0; r < 5; r++) {
+        for (let c = 0; c < 5; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+
+          if (r === 2 && c === 2) {
+            cell.textContent = 'FREE';
+            cell.classList.add('free');
+            boardEl.appendChild(cell);
+            continue;
+          }
+
+          cell.textContent = board[i];
+          if (crossed[i]) cell.classList.add('crossed');
+
+          cell.addEventListener('click', () => {
+            cell.classList.toggle('crossed');
+          });
+
+          boardEl.appendChild(cell);
+          i++;
+        }
+      }
+    }
+
+    async function saveProgress() {
+      const crossed = Array.from(document.querySelectorAll('.cell'))
+        .filter(cell => cell.textContent !== 'FREE')
+        .map(cell => cell.classList.contains('crossed'));
+
+      await fetch('/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: currentUsername, crossed })
+      });
+
+      alert("Progress saved!");
+    }
+
+    function highlightWinningLine(positions) {
+      positions.forEach(([r, c]) => {
+        const index = r * 5 + c;
+        const cell = document.querySelectorAll('.cell')[index];
+        cell.classList.add('winning');
+      });
+
+      confetti({ particleCount: 120, spread: 60, origin: { y: 0.6 } });
+    }
+
+    function checkBingo() {
+      const cells = Array.from(document.querySelectorAll('.cell'));
+      const grid = Array.from({ length: 5 }, () => Array(5).fill(false));
+      let index = 0;
+
+      for (let r = 0; r < 5; r++) {
+        for (let c = 0; c < 5; c++) {
+          const cell = cells[index];
+          grid[r][c] = (r === 2 && c === 2) || cell.classList.contains('crossed');
+          index++;
+        }
+      }
+
+      const complete = arr => arr.every(Boolean);
+
+      for (let r = 0; r < 5; r++) {
+        if (complete(grid[r])) {
+          highlightWinningLine(grid[r].map((_, c) => [r, c]));
+          return;
+        }
+      }
+
+      for (let c = 0; c < 5; c++) {
+        const column = grid.map(row => row[c]);
+        if (complete(column)) {
+          highlightWinningLine(column.map((_, r) => [r, c]));
+          return;
+        }
+      }
+
+      const diag1 = [0, 1, 2, 3, 4].map(i => grid[i][i]);
+      if (complete(diag1)) {
+        highlightWinningLine([0, 1, 2, 3, 4].map(i => [i, i]));
+        return;
+      }
+
+      const diag2 = [0, 1, 2, 3, 4].map(i => grid[i][4 - i]);
+      if (complete(diag2)) {
+        highlightWinningLine([0, 1, 2, 3, 4].map(i => [i, 4 - i]));
+        return;
+      }
+    }
+
+    async function exportPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const date = new Date().toLocaleString();
+      const cells = Array.from(document.querySelectorAll('.cell'));
+
+      let text = `Bingo Board for ${currentUsername}\n${date}\n\n`;
+      let i = 0;
+
+      for (let r = 0; r < 5; r++) {
+        for (let c = 0; c < 5; c++) {
+          let content, crossed;
+          if (r === 2 && c === 2) {
+            content = "FREE";
+            crossed = true;
+          } else {
+            content = cells[i].textContent;
+            crossed = cells[i].classList.contains('crossed');
+            i++;
+          }
+          text += (crossed ? "[X] " : "[ ] ") + content + "\n";
+        }
+        text += "\n";
+      }
+
+      doc.setFontSize(12);
+      doc.text(text, 10, 10);
+      doc.save(`${currentUsername}-bingo.pdf`);
+    }
+  </script>
+</body>
+</html>
