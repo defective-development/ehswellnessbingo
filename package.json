@@ -1,17 +1,18 @@
 {
-  "name": "bingo",
-  "version": "1.0.0",
+  "name": "team-bingo",
+  "version": "2.0.0",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
-  "keywords": [],
+  "keywords": ["bingo", "team", "wellness", "collaboration", "real-time"],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "A team-based wellness bingo application with real-time collaboration, team-specific prompts, and shared boards. Features include live syncing, user tracking, and competitive scoring."
 }

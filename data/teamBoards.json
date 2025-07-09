@@ -1,0 +1,1552 @@
+{
+  "English Department": {
+    "board": [
+      {
+        "text": "Stretch for 5 minutes",
+        "crossed": true,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Practice public speaking",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Learn something new",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Express creativity",
+        "crossed": true,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Exercise for 30 minutes",
+        "crossed": true,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Study grammar rules",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Call a friend or family member",
+        "crossed": true,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Declutter your workspace",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Write in a journal",
+        "crossed": true,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Cook a healthy meal",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Practice self-care",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Practice creative writing",
+        "crossed": true,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "FREE",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": true
+      },
+      {
+        "text": "Learn a new vocabulary word",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Volunteer your time",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Read a short story",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Practice deep breathing",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Meditate for 10 minutes",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Help someone today",
+        "crossed": true,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Listen to music",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Give someone a compliment",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Practice gratitude",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Discuss a book with someone",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Drink more water",
+        "crossed": false,
+        "crossedBy": "",
+        "isFree": false
+      },
+      {
+        "text": "Connect with nature",
+        "crossed": true,
+        "crossedBy": "",
+        "isFree": false
+      }
+    ],
+    "lastUpdated": "2025-07-07T21:11:07.123Z"
+  },
+  "History Department": {
+    "board": [
+      {
+        "text": "Call a friend or family member",
+        "selectedBy": [
+          "",
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Study a historical period",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Share a story",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Clean your living space",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Read historical fiction",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Learn about your family history",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Read for pleasure",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Visit a historical site",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Cook a healthy meal",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Watch a documentary",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Declutter your workspace",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Try a new food",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "FREE",
+        "selectedBy": [],
+        "isFree": true
+      },
+      {
+        "text": "Volunteer your time",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Get 8 hours of sleep",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Practice mindfulness",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Visit a museum",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Exercise for 30 minutes",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Connect with nature",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Look up a historical event",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Meditate for 10 minutes",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice deep breathing",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Listen to music",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Read about a historical figure",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice gratitude",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      }
+    ],
+    "lastUpdated": "2025-07-08T20:23:14.234Z"
+  },
+  "Math Department": {
+    "board": [
+      {
+        "text": "Write down your goals",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Learn about patterns",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Clean your living space",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Explore mathematical concepts",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice deep breathing",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Learn something new",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Listen to music",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Try a new food",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Calculate mental math",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Call a friend or family member",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Take a walk outside",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Express creativity",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "FREE",
+        "selectedBy": [],
+        "isFree": true
+      },
+      {
+        "text": "Learn a new skill",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Read for pleasure",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Drink more water",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice self-care",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice geometry",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Solve a puzzle",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Exercise for 30 minutes",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Solve a logic problem",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Help someone today",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Cook a healthy meal",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice algebra",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Play with numbers",
+        "selectedBy": [],
+        "isFree": false
+      }
+    ],
+    "lastUpdated": "2025-07-09T14:38:46.780Z"
+  },
+  "Science Department": {
+    "board": [
+      {
+        "text": "Cook a healthy meal",
+        "selectedBy": [
+          "",
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Study animal behavior",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Listen to music",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice self-care",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Learn about plants",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Get 8 hours of sleep",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Drink water",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Help someone today",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Take a walk outside",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Exercise for 30 minutes",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Learn something new",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Learn a new skill",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "",
+        "selectedBy": [],
+        "isFree": true
+      },
+      {
+        "text": "Observe the stars",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Call a friend or family member",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Stretch for 5 minutes",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Connect with nature",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Clean your living space",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Explore physics concepts",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Observe something natural",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Learn about chemistry",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice gratitude",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Conduct a simple experiment",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Express creativity",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Read for pleasure",
+        "selectedBy": [],
+        "isFree": false
+      }
+    ],
+    "lastUpdated": "2025-07-08T16:22:26.920Z"
+  },
+  "Language Department": {
+    "board": [
+      {
+        "text": "Learn about different cultures",
+        "selectedBy": [
+          "",
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Exercise for 30 minutes",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Practice gratitude",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Learn about language origins",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice self-care",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Connect with nature",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Learn something new",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice another language",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Help someone today",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Practice deep breathing",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice conversation skills",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Write down your goals",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "",
+        "selectedBy": [],
+        "isFree": true
+      },
+      {
+        "text": "Listen to music",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Take a walk outside",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Try a new food",
+        "selectedBy": [
+          ""
+        ],
+        "isFree": false
+      },
+      {
+        "text": "Cook a healthy meal",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice pronunciation",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Study phonetics",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Clean your living space",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice translation",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Give someone a compliment",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Study linguistics",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Study grammar",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Learn a new word",
+        "selectedBy": [],
+        "isFree": false
+      }
+    ],
+    "lastUpdated": "2025-07-08T16:42:31.258Z"
+  },
+  "Art Department": {
+    "board": [
+      {
+        "text": "Practice deep breathing",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice mindfulness",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Drink more water",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Appreciate architecture",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Give someone a compliment",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Exercise for 30 minutes",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Study different art styles",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Connect with nature",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Call a friend or family member",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Declutter your workspace",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Draw something",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Stretch for 5 minutes",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "",
+        "selectedBy": [],
+        "isFree": true
+      },
+      {
+        "text": "Learn a new skill",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Try a new food",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Study art history",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Visit a colorful space",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Create a craft project",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Visit an art gallery",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Learn something new",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice gratitude",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Write down your goals",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Volunteer your time",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Read for pleasure",
+        "selectedBy": [],
+        "isFree": false
+      },
+      {
+        "text": "Practice self-care",
+        "selectedBy": [],
+        "isFree": false
+      }
+    ],
+    "lastUpdated": "2025-07-08T17:15:54.108Z"
+  },
+  "Edina High School": {
+    "Math Department": {
+      "board": [
+        {
+          "text": "Listen to music",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Write down your goals",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Help someone today",
+          "selectedBy": [
+            "",
+            "",
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Explore mathematical concepts",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Give someone a compliment",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice self-care",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Connect with nature",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Learn a new skill",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Express creativity",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Meditate for 10 minutes",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Learn a new formula",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Drink more water",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "FREE",
+          "selectedBy": [],
+          "isFree": true
+        },
+        {
+          "text": "Practice algebra",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Learn about patterns",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Practice mindfulness",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Get 8 hours of sleep",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Stretch for 5 minutes",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Solve a logic problem",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Read for pleasure",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice geometry",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice gratitude",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Try a new food",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Declutter your workspace",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Study statistics",
+          "selectedBy": [],
+          "isFree": false
+        }
+      ],
+      "lastUpdated": "2025-07-09T18:27:52.403Z"
+    },
+    "English Department": {
+      "board": [
+        {
+          "text": "Read a poem",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Learn something new",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Help someone today",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Write down your goals",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Exercise for 30 minutes",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice mindfulness",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Study grammar rules",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice public speaking",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Take a walk outside",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Read a short story",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Connect with nature",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Discuss a book with someone",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "FREE",
+          "selectedBy": [],
+          "isFree": true
+        },
+        {
+          "text": "Clean your living space",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice deep breathing",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Declutter your workspace",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Write a letter to someone",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Analyze a piece of literature",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Volunteer your time",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Get 8 hours of sleep",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Meditate for 10 minutes",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Write in a journal",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Express creativity",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Give someone a compliment",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Call a friend or family member",
+          "selectedBy": [],
+          "isFree": false
+        }
+      ],
+      "lastUpdated": "2025-07-09T18:34:49.684Z"
+    },
+    "English Department Group 2": {
+      "board": [
+        {
+          "text": "Learn a new skill",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice self-care",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Help someone today",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Drink more water",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Write down your goals",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Express creativity",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Learn something new",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Volunteer your time",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Try a new food",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice mindfulness",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Exercise for 30 minutes",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Cook a healthy meal",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "FREE",
+          "selectedBy": [],
+          "isFree": true
+        },
+        {
+          "text": "Meditate for 10 minutes",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice deep breathing",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Declutter your workspace",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Connect with nature",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Read for pleasure",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Stretch for 5 minutes",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Clean your living space",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Take a walk outside",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Call a friend or family member",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Get 8 hours of sleep",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice gratitude",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Listen to music",
+          "selectedBy": [],
+          "isFree": false
+        }
+      ],
+      "lastUpdated": "2025-07-09T18:35:01.502Z"
+    }
+  },
+  "Valley View Middle School": {
+    "Math Department": {
+      "board": [
+        {
+          "text": "Meditate for 10 minutes",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Drink more water",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice algebra",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Practice self-care",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Calculate mental math",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Explore mathematical concepts",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Listen to music",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Study statistics",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Exercise for 30 minutes",
+          "selectedBy": [
+            ""
+          ],
+          "isFree": false
+        },
+        {
+          "text": "Practice gratitude",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Connect with nature",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Learn about patterns",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "FREE",
+          "selectedBy": [],
+          "isFree": true
+        },
+        {
+          "text": "Help someone today",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice deep breathing",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Try a new food",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Write down your goals",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Solve a puzzle",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Express creativity",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Read for pleasure",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Learn something new",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Stretch for 5 minutes",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Clean your living space",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Play with numbers",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Learn a new skill",
+          "selectedBy": [],
+          "isFree": false
+        }
+      ],
+      "lastUpdated": "2025-07-09T14:39:51.669Z"
+    }
+  },
+  "South View Middle School": {
+    "English Department": {
+      "board": [
+        {
+          "text": "Practice mindfulness",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Help someone today",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Cook a healthy meal",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Call a friend or family member",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Volunteer your time",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Give someone a compliment",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Write in a journal",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice self-care",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Try a new food",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice gratitude",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Stretch for 5 minutes",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Practice public speaking",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "FREE",
+          "selectedBy": [],
+          "isFree": true
+        },
+        {
+          "text": "Read a poem",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Express creativity",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Learn a new vocabulary word",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Take a walk outside",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Meditate for 10 minutes",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Declutter your workspace",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Get 8 hours of sleep",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Write a letter to someone",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Exercise for 30 minutes",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Learn a new skill",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Listen to music",
+          "selectedBy": [],
+          "isFree": false
+        },
+        {
+          "text": "Write down your goals",
+          "selectedBy": [],
+          "isFree": false
+        }
+      ],
+      "lastUpdated": "2025-07-09T14:47:40.629Z"
+    }
+  }
+}

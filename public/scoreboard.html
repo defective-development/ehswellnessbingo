@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Team Bingo Scoreboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #00A160 0%, #006225 100%);
+      color: #333;
+      margin: 0;
+      padding: 2em;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      margin-bottom: 1em;
+    }
+
+    .scoreboard-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 2em;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .team-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr 1fr;
+      gap: 1em;
+      padding: 1em;
+      margin: 0.5em 0;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .team-row:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .team-row.winner {
+      background: linear-gradient(135deg, #FFAF1D 0%, #ffc107 100%);
+      border-color: #FFAF1D;
+    }
+
+    .team-row.second {
+      background: linear-gradient(135deg, #72A392 0%, #00A160 100%);
+      border-color: #006225;
+      color: white;
+    }
+
+    .team-row.third {
+      background: linear-gradient(135deg, #006225 0%, #00A160 100%);
+      border-color: #006225;
+      color: white;
+    }
+
+    .rank {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .team-name {
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .bingo-count {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .member-count {
+      opacity: 0.7;
+    }
+
+    .header {
+      font-weight: bold;
+      background: linear-gradient(135deg, #00A160 0%, #72A392 100%);
+      color: white;
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 1em;
+    }
+
+    .refresh-btn {
+      background: linear-gradient(135deg, #00A160 0%, #006225 100%);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1em;
+      margin: 1em 0;
+      transition: all 0.3s ease;
+    }
+
+    .refresh-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      background: linear-gradient(135deg, #006225 0%, #00A160 100%);
+    }
+
+    .back-link {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255,255,255,0.9);
+      padding: 10px 15px;
+      border-radius: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .last-updated {
+      margin-top: 2em;
+      opacity: 0.7;
+      font-size: 0.9em;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 2em;
+      font-size: 1.2em;
+      color: #666;
+    }
+
+    .error {
+      color: #d32f2f;
+      background: #ffebee;
+      padding: 1em;
+      border-radius: 8px;
+      margin: 1em 0;
+    }
+  </style>
+</head>
+<body>
+  <a href="/" class="back-link">← Back to Game</a>
+  
+  <h1>🏆 Team Bingo Scoreboard</h1>
+  
+  <div class="scoreboard-container">
+    <div class="header">
+      <div style="display: grid; grid-template-columns: 1fr 2fr 1fr 1fr; gap: 1em;">
+        <div>Rank</div>
+        <div style="text-align: left;">Team</div>
+        <div>Bingos</div>
+        <div>Members</div>
+      </div>
+    </div>
+    
+    <div id="scoreboard-content">
+      <div class="loading">Loading scoreboard...</div>
+    </div>
+    
+    <button class="refresh-btn" onclick="loadScoreboard()">🔄 Refresh</button>
+    
+    <div class="last-updated" id="last-updated"></div>
+  </div>
+
+  <script>
+    async function loadScoreboard() {
+      const contentDiv = document.getElementById('scoreboard-content');
+      const lastUpdatedDiv = document.getElementById('last-updated');
+      
+      try {
+        contentDiv.innerHTML = '<div class="loading">Loading scoreboard...</div>';
+        
+        const res = await fetch('/scoreboard');
+        if (!res.ok) {
+          throw new Error('Failed to load scoreboard');
+        }
+        
+        const rankings = await res.json();
+        
+        if (rankings.length === 0) {
+          contentDiv.innerHTML = '<div class="loading">No teams have played yet!</div>';
+          return;
+        }
+        
+        let html = '';
+        rankings.forEach((team, index) => {
+          const rank = index + 1;
+          let rowClass = 'team-row';
+          let rankDisplay = rank;
+          
+          if (rank === 1) {
+            rowClass += ' winner';
+            rankDisplay = '🥇';
+          } else if (rank === 2) {
+            rowClass += ' second';
+            rankDisplay = '🥈';
+          } else if (rank === 3) {
+            rowClass += ' third';
+            rankDisplay = '🥉';
+          }
+          
+          html += `
+            <div class="${rowClass}">
+              <div class="rank">${rankDisplay}</div>
+              <div class="team-name">${team.team}</div>
+              <div class="bingo-count">${team.bingos}</div>
+              <div class="member-count">${team.members}</div>
+            </div>
+          `;
+        });
+        
+        contentDiv.innerHTML = html;
+        lastUpdatedDiv.textContent = `Last updated: ${new Date().toLocaleString()}`;
+        
+      } catch (error) {
+        console.error('Error loading scoreboard:', error);
+        contentDiv.innerHTML = `
+          <div class="error">
+            Error loading scoreboard. Please try again.
+          </div>
+        `;
+      }
+    }
+
+    // Load scoreboard on page load
+    window.onload = loadScoreboard;
+    
+    // Auto-refresh every 30 seconds
+    setInterval(loadScoreboard, 30000);
+  </script>
+</body>
+</html> 

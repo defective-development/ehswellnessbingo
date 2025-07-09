@@ -2,35 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Wellness Bingo App</title>
+  <title>Team Wellness Bingo App</title>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #f5f7fa;
+      background: #fff url('/honeycomb-bg.png') top center repeat-y;
+      background-size: auto 100%;
       color: #333;
       margin: 0;
-      padding: 2em;
+      padding: 0.5em;
       text-align: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Remove honeycomb SVG backgrounds */
+    .honeycomb-bg, .honeycomb-left, .honeycomb-right { display: none !important; }
+    #main-content {
+      position: relative;
+      z-index: 1;
     }
 
     h2 {
       margin-bottom: 0.5em;
+      color: #333;
+      text-shadow: none;
     }
 
     /* 🧾 Login box styling */
     #login-form {
       max-width: 480px;
-      margin: 8vh auto;
+      margin: 2vh auto;
       background: white;
       padding: 2.5em;
       border-radius: 16px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       font-size: 1.1em;
     }
 
-    input {
+    input, select {
       padding: 12px;
       width: 95%;
       max-width: 320px;
@@ -38,61 +50,152 @@
       border-radius: 6px;
       border: 1px solid #ccc;
       margin-bottom: 16px;
+      background: white;
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    .team-info {
+      background: linear-gradient(135deg, #00A160 0%, #72A392 100%);
+      color: white;
+      padding: 0.8em;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .team-info h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.2em;
+    }
+
+    .team-info p {
+      margin: 3px 0;
+      opacity: 0.9;
+      font-size: 0.9em;
     }
 
     .bingo-board {
       display: grid;
-      grid-template-columns: repeat(5, 130px); /* was 122px */
-      gap: 14px 20px; /* vertical gap 14px, horizontal 14px */
+      grid-template-columns: repeat(5, 90px);
+      gap: 6px 10px;
       justify-content: center;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     .cell {
-      width: 122px;
-      height: 122px;
+      width: 80px;
+      height: 80px;
       background: #fff;
       border: 2px solid #ccc;
-      border-radius: 12px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 6px;
-      font-size: 0.85em;
+      padding: 4px;
+      font-size: 0.7em;
       word-wrap: break-word;
       overflow-wrap: break-word;
       cursor: pointer;
-      transition: background-color 0.3s, color 0.3s, transform 0.2s ease;
+      transition: all 0.3s ease;
+      position: relative;
     }
 
     .cell:active {
       transform: scale(0.95);
     }
 
-    .cell.crossed {
-      background: #ddd;
+    .cell.crossed-by-others {
+      background: linear-gradient(135deg, #FFAF1D 0%, #ffc107 100%);
       text-decoration: line-through;
-      color: #777;
-      transform: scale(1.05);
+      color: #8B4513;
+      transform: scale(1.02);
+      border-color: #FFAF1D;
     }
 
+    .cell.crossed-by-me {
+      background: linear-gradient(135deg, #00A160 0%, #72A392 100%);
+      text-decoration: line-through;
+      color: white;
+      transform: scale(1.02);
+      border-color: #006225;
+    }
+
+    .cell.crossed-by-both {
+      background: linear-gradient(135deg, #B3E5FC 0%, #81D4FA 100%);
+      text-decoration: line-through;
+      color: #01579B;
+      transform: scale(1.02);
+      border-color: #0288D1;
+    }
     .cell.free {
-      background: #a8e6a2;
+      background: #fff;
       font-weight: bold;
       cursor: default;
+      border-color: #FFAF1D;
+      color: #8B4513;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0;
+    }
+    .free-logo {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto;
+      display: block;
     }
 
     .cell.winning {
       animation: bingoFlash 0.6s ease-in-out 3;
       font-weight: bold;
-      border: 2px solid gold;
+      border: 3px solid #FFAF1D;
+      box-shadow: 0 0 20px rgba(255, 175, 29, 0.6);
+    }
+
+    .cell:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .cell.crossed:hover {
+      transform: scale(1.02) translateY(-2px);
+    }
+
+    .crossed-by {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      font-size: 0.5em;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 1px 3px;
+      border-radius: 3px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .cell.crossed .crossed-by,
+    .cell.crossed-by-others .crossed-by,
+    .cell.crossed-by-me .crossed-by,
+    .cell.crossed-by-both .crossed-by {
+      opacity: 1;
     }
 
     @keyframes bingoFlash {
-      0%, 100% { background-color: gold; }
-      50% { background-color: white; }
+      0%, 100% { 
+        background: linear-gradient(135deg, #FFAF1D 0%, #ffc107 100%);
+        transform: scale(1.05);
+      }
+      50% { 
+        background: linear-gradient(135deg, #fff8dc 0%, #FFAF1D 100%);
+        transform: scale(1.1);
+      }
     }
 
     @keyframes fadeIn {
@@ -146,6 +249,12 @@
     #game-section {
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
+      max-width: 1000px;
+      margin: 0 auto;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     #game-section.visible {
@@ -153,139 +262,431 @@
     }
 
     button {
-      padding: 12px 20px;
-      font-size: 1.05em;
+      padding: 10px 16px;
+      font-size: 1em;
       border: none;
       border-radius: 8px;
-      background: #5c9ded;
+      background: linear-gradient(135deg, #00A160 0%, #006225 100%);
       color: white;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: all 0.3s ease;
+      margin: 3px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
 
     button:hover {
-      background: #3e7cd3;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      background: linear-gradient(135deg, #006225 0%, #00A160 100%);
+    }
+
+    .button-group {
+      margin: 10px 0;
+    }
+
+    .sync-indicator {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #00A160;
+      margin-left: 8px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .scoreboard-link {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #FFAF1D 0%, #ffc107 100%);
+      padding: 12px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      color: #8B4513;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .scoreboard-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      background: linear-gradient(135deg, #ffc107 0%, #FFAF1D 100%);
+    }
+
+    /* Responsive design for smaller screens */
+    @media (max-height: 700px) {
+      body {
+        padding: 0.3em;
+      }
+      
+      .bingo-board {
+        grid-template-columns: repeat(5, 80px);
+        gap: 4px 8px;
+      }
+      
+      .cell {
+        width: 70px;
+        height: 70px;
+        font-size: 0.65em;
+      }
+      
+      .team-info {
+        padding: 0.6em;
+        margin-bottom: 8px;
+      }
+      
+      .button-group {
+        margin: 8px 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .bingo-board {
+        grid-template-columns: repeat(5, 70px);
+        gap: 3px 6px;
+      }
+      
+      .cell {
+        width: 60px;
+        height: 60px;
+        font-size: 0.6em;
+      }
+      
+      .scoreboard-link {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 15px;
+        font-size: 0.9em;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="login-form">
-    <h2>Bingo Login</h2>
-    <input type="text" id="username" placeholder="Username"><br>
-    <input type="password" id="password" placeholder="Password"><br>
-    <button onclick="login()">Login</button>
-    <p id="error" style="color: red;"></p>
-  </div>
+  <div id="main-content">
+    <div id="login-step1">
+      <h2>Team Bingo Login</h2>
+      <input type="text" id="username" placeholder="Username"><br>
+      <input type="password" id="password" placeholder="Password"><br>
+      <button onclick="checkUsername()">Next</button>
+      <p id="error-step1" style="color: red;"></p>
+    </div>
+    <div id="login-step2" style="display:none;">
+      <h2>Select Building & Team</h2>
+      <select id="building" placeholder="Select Building">
+        <option value="">Select Building</option>
+      </select><br>
+      <select id="team" placeholder="Select Team">
+        <option value="">Select Team</option>
+      </select><br>
+      <button onclick="registerUser()">Create Account</button>
+      <button onclick="backToStep1()" style="margin-left:10px;">Back</button>
+      <p id="error-step2" style="color: red;"></p>
+    </div>
+    <div id="game-section">
+      <div class="team-info">
+        <h3 id="team-name">Team Name</h3>
+        <p id="user-info">Welcome, <span id="current-user"></span>!</p>
+        <p>Bingos: <span id="bingo-count">0</span></p>
+      </div>
+      
+      <div class="button-group">
+      <button onclick="checkBingo()">Check for BINGO</button>
+      <button onclick="exportPDF()">Export to PDF</button>
+        <span class="sync-indicator" title="Live sync active"></span>
+      </div>
+      
+      <div id="board" class="bingo-board"></div>
+    </div>
 
-  <div id="game-section">
-    <h2>Welcome to Bingo!</h2>
-    <button onclick="saveProgress()">Save Progress</button>
-    <button onclick="newBoard()">New Board</button>
-    <button onclick="checkBingo()">Check for BINGO</button>
-    <button onclick="exportPDF()">Export to PDF</button>
-    <div id="board" class="bingo-board"></div>
+    <a href="/scoreboard.html" class="scoreboard-link" target="_blank">🏆 Scoreboard</a>
   </div>
 
   <script>
     let currentUsername = "";
+    let currentTeam = "";
+    let currentBuilding = "";
+    let syncInterval = null;
+    let isNewUser = false;
 
-    async function login() {
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      currentUsername = username;
+    // Load teams and buildings on page load
+    window.onload = async function() {
+      await loadTeams();
+      await loadBuildings();
+    };
 
-      const res = await fetch('/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      });
-
-      if (res.ok) {
-        const { board, crossed = [] } = await res.json();
-        renderBoard(board, crossed);
-        document.getElementById('login-form').style.display = 'none';
-        document.getElementById('game-section').classList.add('visible');
-      } else {
-        const { error } = await res.json();
-        document.getElementById('error').textContent = error;
+    async function loadTeams() {
+      try {
+        const res = await fetch('/teams');
+        const teams = await res.json();
+        const teamSelect = document.getElementById('team');
+        teamSelect.innerHTML = '<option value="">Select Team</option>';
+        teams.forEach(team => {
+          const option = document.createElement('option');
+          option.value = team;
+          option.textContent = team;
+          teamSelect.appendChild(option);
+        });
+      } catch (error) {
+        console.error('Error loading teams:', error);
       }
     }
 
-function newBoard() {
-  const tiles = Array.from(document.querySelectorAll('.cell'))
-    .filter(cell => cell.textContent !== 'FREE');
+    async function loadBuildings() {
+      try {
+        const res = await fetch('/buildings');
+        const buildings = await res.json();
+        const buildingSelect = document.getElementById('building');
+        buildingSelect.innerHTML = '<option value="">Select Building</option>';
+        buildings.forEach(building => {
+          const option = document.createElement('option');
+          option.value = building;
+          option.textContent = building;
+          buildingSelect.appendChild(option);
+        });
+      } catch (error) {
+        console.error('Error loading buildings:', error);
+      }
+    }
 
-  // Grab all current texts
-  const contents = tiles.map(cell => cell.textContent);
+    async function checkUsername() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      if (!username || !password) {
+        document.getElementById('error-step1').textContent = "Username and password required";
+        return;
+      }
+      // Check if user exists
+      try {
+        const res = await fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        if (res.ok) {
+          // Existing user, log in
+          const { board, team: teamName, building: buildingName, bingos } = await res.json();
+          currentUsername = username;
+          currentTeam = teamName;
+          currentBuilding = buildingName;
+          renderBoard(board);
+          updateTeamInfo(teamName, buildingName, bingos);
+          document.getElementById('login-step1').style.display = 'none';
+          document.getElementById('game-section').classList.add('visible');
+          startSync();
+        } else {
+          const { error } = await res.json();
+          if (error === 'User not found') {
+            // New user, go to step 2
+            isNewUser = true;
+            document.getElementById('login-step1').style.display = 'none';
+            document.getElementById('login-step2').style.display = '';
+            document.getElementById('error-step1').textContent = '';
+          } else {
+            document.getElementById('error-step1').textContent = error;
+          }
+        }
+      } catch (error) {
+        document.getElementById('error-step1').textContent = "Login failed. Please try again.";
+      }
+    }
 
-  // Fisher-Yates shuffle
-  for (let i = contents.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [contents[i], contents[j]] = [contents[j], contents[i]];
-  }
+    async function registerUser() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const building = document.getElementById('building').value;
+      const team = document.getElementById('team').value;
+      if (!building || !team) {
+        document.getElementById('error-step2').textContent = "Building and team required";
+        return;
+      }
+      try {
+        const res = await fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password, building, team })
+        });
+        if (res.ok) {
+          const { board, team: teamName, building: buildingName, bingos } = await res.json();
+          currentUsername = username;
+          currentTeam = teamName;
+          currentBuilding = buildingName;
+          renderBoard(board);
+          updateTeamInfo(teamName, buildingName, bingos);
+          document.getElementById('login-step2').style.display = 'none';
+          document.getElementById('game-section').classList.add('visible');
+          startSync();
+        } else {
+          const { error } = await res.json();
+          document.getElementById('error-step2').textContent = error;
+        }
+      } catch (error) {
+        document.getElementById('error-step2').textContent = "Account creation failed. Please try again.";
+      }
+    }
 
-  // Optional animation (fade out)
-  tiles.forEach(cell => {
-    cell.classList.add('fade-out');
-  });
+    function backToStep1() {
+      document.getElementById('login-step2').style.display = 'none';
+      document.getElementById('login-step1').style.display = '';
+    }
 
-  setTimeout(() => {
-    tiles.forEach((cell, i) => {
-      cell.textContent = contents[i];
-      cell.classList.remove('crossed');
-      cell.classList.remove('fade-out');
-      cell.classList.add('fade-in');
-    });
+    function showLockedFields(building, team) {
+      // Replace the dropdowns with read-only fields after login
+      const buildingSelect = document.getElementById('building');
+      const teamSelect = document.getElementById('team');
+      const buildingField = document.createElement('input');
+      buildingField.type = 'text';
+      buildingField.value = building;
+      buildingField.readOnly = true;
+      buildingField.style.marginBottom = '16px';
+      buildingField.style.width = '95%';
+      buildingField.style.maxWidth = '320px';
+      buildingField.style.padding = '12px';
+      buildingField.style.borderRadius = '6px';
+      buildingField.style.border = '1px solid #ccc';
+      buildingField.style.background = '#f5f5f5';
+      buildingField.style.fontWeight = 'bold';
+      buildingSelect.parentNode.replaceChild(buildingField, buildingSelect);
+      const teamField = document.createElement('input');
+      teamField.type = 'text';
+      teamField.value = team;
+      teamField.readOnly = true;
+      teamField.style.marginBottom = '16px';
+      teamField.style.width = '95%';
+      teamField.style.maxWidth = '320px';
+      teamField.style.padding = '12px';
+      teamField.style.borderRadius = '6px';
+      teamField.style.border = '1px solid #ccc';
+      teamField.style.background = '#f5f5f5';
+      teamField.style.fontWeight = 'bold';
+      teamSelect.parentNode.replaceChild(teamField, teamSelect);
+    }
 
-    setTimeout(() => {
-      tiles.forEach(cell => cell.classList.remove('fade-in'));
-    }, 300);
-  }, 200);
-}
+    function updateTeamInfo(team, building, bingos) {
+      document.getElementById('team-name').textContent = team;
+      document.getElementById('current-user').textContent = currentUsername;
+      document.getElementById('bingo-count').textContent = bingos;
+    }
 
-
-    function renderBoard(board, crossed = []) {
+    function renderBoard(board) {
       const boardEl = document.getElementById('board');
       boardEl.innerHTML = '';
-      let i = 0;
 
       for (let r = 0; r < 5; r++) {
         for (let c = 0; c < 5; c++) {
+          const index = r * 5 + c;
+          const tile = board[index];
+          
           const cell = document.createElement('div');
           cell.className = 'cell';
+          cell.textContent = tile.text;
 
-          if (r === 2 && c === 2) {
-            cell.textContent = 'FREE';
+          if (tile.isFree) {
             cell.classList.add('free');
-            boardEl.appendChild(cell);
-            continue;
+            const freeLogo = document.createElement('img');
+            freeLogo.src = '/Edina_High_School_logo.jpg';
+            freeLogo.alt = 'Edina Crest';
+            freeLogo.className = 'free-logo';
+            cell.appendChild(freeLogo);
+          } else {
+            // Determine tile state and styling
+            const hasMe = tile.selectedBy.includes(currentUsername);
+            const hasOthers = tile.selectedBy.length > 0 && !hasMe;
+            const hasBoth = tile.selectedBy.includes(currentUsername) && tile.selectedBy.length > 1;
+
+            if (hasBoth) {
+              cell.classList.add('crossed-by-both');
+            } else if (hasMe) {
+              cell.classList.add('crossed-by-me');
+            } else if (hasOthers) {
+              cell.classList.add('crossed-by-others');
+            }
+
+            // Add selection indicator
+            if (tile.selectedBy.length > 0) {
+              const crossedBy = document.createElement('div');
+              crossedBy.className = 'crossed-by';
+              
+              if (tile.selectedBy.length === 1) {
+                crossedBy.textContent = tile.selectedBy[0];
+              } else if (tile.selectedBy.length === 2) {
+                crossedBy.textContent = `${tile.selectedBy[0]} and ${tile.selectedBy[1]}`;
+              } else {
+                const others = tile.selectedBy.length - 1;
+                crossedBy.textContent = `${tile.selectedBy[0]} and ${others} more`;
+              }
+              
+              cell.appendChild(crossedBy);
+            }
+
+            cell.addEventListener('click', () => toggleTile(r, c, tile));
           }
 
-          cell.textContent = board[i];
-          if (crossed[i]) cell.classList.add('crossed');
-
-          cell.addEventListener('click', () => {
-            cell.classList.toggle('crossed');
-          });
-
           boardEl.appendChild(cell);
-          i++;
         }
       }
     }
 
-    async function saveProgress() {
-      const crossed = Array.from(document.querySelectorAll('.cell'))
-        .filter(cell => cell.textContent !== 'FREE')
-        .map(cell => cell.classList.contains('crossed'));
-
-      await fetch('/save', {
+    async function toggleTile(row, col, tile) {
+      const isCurrentlySelected = tile.selectedBy.includes(currentUsername);
+      const newSelectedState = !isCurrentlySelected;
+      
+      try {
+        const res = await fetch('/tile', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: currentUsername, crossed })
+          body: JSON.stringify({
+            username: currentUsername,
+            building: currentBuilding,
+            team: currentTeam,
+            row: row,
+            col: col,
+            selected: newSelectedState
+          })
       });
 
-      alert("Progress saved!");
+        if (res.ok) {
+          // Update will be reflected in next sync
+        } else {
+          console.error('Failed to update tile');
+        }
+      } catch (error) {
+        console.error('Error updating tile:', error);
+      }
+    }
+
+    async function syncBoard() {
+      try {
+        const res = await fetch(`/getTeamBoard?building=${encodeURIComponent(currentBuilding)}&team=${encodeURIComponent(currentTeam)}`);
+        if (res.ok) {
+          const { board } = await res.json();
+          renderBoard(board);
+        }
+      } catch (error) {
+        console.error('Sync error:', error);
+      }
+    }
+
+    function startSync() {
+      // Initial sync
+      syncBoard();
+      
+      // Set up periodic sync every 10 seconds
+      syncInterval = setInterval(syncBoard, 10000);
+    }
+
+    function stopSync() {
+      if (syncInterval) {
+        clearInterval(syncInterval);
+        syncInterval = null;
+      }
     }
 
     function highlightWinningLine(positions) {
@@ -295,81 +696,127 @@ function newBoard() {
         cell.classList.add('winning');
       });
 
-      confetti({ particleCount: 120, spread: 60, origin: { y: 0.6 } });
+      confetti({ 
+        particleCount: 120, 
+        spread: 60, 
+        origin: { y: 0.6 },
+        colors: ['#FFAF1D', '#ffc107', '#00A160', '#72A392', '#006225']
+      });
     }
 
-    function checkBingo() {
-      const cells = Array.from(document.querySelectorAll('.cell'));
+    async function checkBingo() {
+      try {
+        const res = await fetch(`/getTeamBoard?building=${encodeURIComponent(currentBuilding)}&team=${encodeURIComponent(currentTeam)}`);
+        if (!res.ok) return;
+        
+        const { board } = await res.json();
       const grid = Array.from({ length: 5 }, () => Array(5).fill(false));
       let index = 0;
 
       for (let r = 0; r < 5; r++) {
         for (let c = 0; c < 5; c++) {
-          const cell = cells[index];
-          grid[r][c] = (r === 2 && c === 2) || cell.classList.contains('crossed');
+            const tile = board[index];
+            // Only count tiles that the current user has selected (or FREE square)
+            grid[r][c] = tile.isFree || tile.selectedBy.includes(currentUsername);
           index++;
         }
       }
 
       const complete = arr => arr.every(Boolean);
 
+        // Check rows
       for (let r = 0; r < 5; r++) {
         if (complete(grid[r])) {
           highlightWinningLine(grid[r].map((_, c) => [r, c]));
+            await updateBingos();
           return;
         }
       }
 
+        // Check columns
       for (let c = 0; c < 5; c++) {
         const column = grid.map(row => row[c]);
         if (complete(column)) {
           highlightWinningLine(column.map((_, r) => [r, c]));
+            await updateBingos();
           return;
         }
       }
 
+        // Check diagonals
       const diag1 = [0, 1, 2, 3, 4].map(i => grid[i][i]);
       if (complete(diag1)) {
         highlightWinningLine([0, 1, 2, 3, 4].map(i => [i, i]));
+          await updateBingos();
         return;
       }
 
       const diag2 = [0, 1, 2, 3, 4].map(i => grid[i][4 - i]);
       if (complete(diag2)) {
         highlightWinningLine([0, 1, 2, 3, 4].map(i => [i, 4 - i]));
+          await updateBingos();
         return;
+        }
+
+        alert("No BINGO yet! Keep going!");
+      } catch (error) {
+        console.error('Error checking bingo:', error);
+      }
+    }
+
+    async function updateBingos() {
+      try {
+        await fetch('/updateBingos', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ building: currentBuilding, team: currentTeam })
+        });
+        
+        // Update the bingo count display
+        const currentCount = parseInt(document.getElementById('bingo-count').textContent);
+        document.getElementById('bingo-count').textContent = currentCount + 1;
+      } catch (error) {
+        console.error('Error updating bingos:', error);
       }
     }
 
     async function exportPDF() {
+      try {
+        const res = await fetch(`/getTeamBoard?building=${encodeURIComponent(currentBuilding)}&team=${encodeURIComponent(currentTeam)}`);
+        if (!res.ok) return;
+        
+        const { board } = await res.json();
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
       const date = new Date().toLocaleString();
-      const cells = Array.from(document.querySelectorAll('.cell'));
 
-      let text = `Bingo Board for ${currentUsername}\n${date}\n\n`;
-      let i = 0;
+        let text = `Team Bingo Board: ${currentTeam}\n`;
+        text += `Building: ${currentBuilding}\n`;
+        text += `User: ${currentUsername}\n`;
+        text += `Date: ${date}\n\n`;
 
       for (let r = 0; r < 5; r++) {
         for (let c = 0; c < 5; c++) {
-          let content, crossed;
-          if (r === 2 && c === 2) {
-            content = "FREE";
-            crossed = true;
-          } else {
-            content = cells[i].textContent;
-            crossed = cells[i].classList.contains('crossed');
-            i++;
-          }
-          text += (crossed ? "[X] " : "[ ] ") + content + "\n";
+            const index = r * 5 + c;
+            const tile = board[index];
+            const crossed = tile.selectedBy.includes(currentUsername) ? "[X]" : "[ ]";
+            const othersSelected = tile.selectedBy.length > 0 && !tile.selectedBy.includes(currentUsername);
+            const crossedBy = othersSelected ? ` (Others: ${tile.selectedBy.join(', ')})` : "";
+            text += `${crossed} ${tile.text}${crossedBy}\n`;
         }
         text += "\n";
       }
 
-      doc.setFontSize(12);
+        doc.setFontSize(10);
       doc.text(text, 10, 10);
-      doc.save(`${currentUsername}-bingo.pdf`);
+        doc.save(`${currentTeam}-${currentBuilding}-${currentUsername}-bingo.pdf`);
+      } catch (error) {
+        console.error('Error exporting PDF:', error);
+      }
     }
+
+    // Clean up on page unload
+    window.addEventListener('beforeunload', stopSync);
   </script>
 </body>
 </html>

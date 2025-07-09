@@ -1,0 +1,32 @@
+{
+  "user1": {
+    "password": "1234",
+    "team": "English Department",
+    "building": "Edina High School",
+    "bingos": 0
+  },
+  "user2": {
+    "password": "1234",
+    "team": "English Department",
+    "building": "Edina High School",
+    "bingos": 0
+  },
+  "user3": {
+    "password": "1234",
+    "team": "English Department",
+    "building": "Edina High School",
+    "bingos": 0
+  },
+  "user4": {
+    "password": "1234",
+    "team": "English Department",
+    "building": "Edina High School",
+    "bingos": 0
+  },
+  "user5": {
+    "password": "1234",
+    "team": "English Department Group 2",
+    "building": "Edina High School",
+    "bingos": 0
+  }
+}
